@@ -3,7 +3,6 @@ import cgi
 
 result =['']
 
-
 class CalHandler(BaseHTTPRequestHandler):
 
     def do_GET(self):
@@ -46,7 +45,6 @@ class CalHandler(BaseHTTPRequestHandler):
 
     def do_POST(self):
         if self.path.startswith('/form'):
-
                     global result
                     ctype, pdict = cgi.parse_header(self.headers.get('content-type'))
                     pdict['boundary'] = bytes(pdict['boundary'], "utf-8")
@@ -54,17 +52,15 @@ class CalHandler(BaseHTTPRequestHandler):
                     pdict['CONTENT-LENGTH'] = content_len
                     if ctype == 'multipart/form-data':
                         fields = cgi.parse_multipart(self.rfile, pdict)
-
                         lst = list()
                         op = fields.get("Operator")
                         a = op[0]
-                        print(type(a))
                         n1 = fields.get("val1")
                         n2 = fields.get("val2")
                         lst.append(a)
                         lst.append(n1[0])
                         lst.append(n2[0])
-                        print(lst)
+
                         if lst[0] == "add":
                             val = int(lst[1]) + int(lst[2])
                             a = f'{lst[1]} + {lst[2]} = {val} '
