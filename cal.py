@@ -38,8 +38,8 @@ class CalHandler(BaseHTTPRequestHandler):
                 self.send_header('Content-type', 'text/html')
                 self.end_headers()
                 output=''
-                output+="<html><body>"
-                output+=f'RESULT: {result[-1]}'
+                output+="<html><body><h1>Calculation Result</h1>"
+                output+=f' {result[-1]}'
                 output+= "</html></body>"
                 self.wfile.write(output.encode())
 
