@@ -1,7 +1,17 @@
 from http.server import HTTPServer, BaseHTTPRequestHandler
 import cgi
 
+<<<<<<< HEAD
 result = ['']
+=======
+result =['']
+class CalHandler(BaseHTTPRequestHandler):
+    
+    def do_GET(self):
+        self.send_response(200)
+        self.send_header('Content-type', 'text/html')
+        self.end_headers()
+>>>>>>> d688caccfab5ffe072bf54dba05f838d7068f8df
 
 
 class CalHandler(BaseHTTPRequestHandler):
