@@ -1,7 +1,6 @@
 from http.server import HTTPServer, BaseHTTPRequestHandler
 import cgi
 
-# data1 = data
 result =['']
 class CalHandler(BaseHTTPRequestHandler):
     result = ''
@@ -9,20 +8,7 @@ class CalHandler(BaseHTTPRequestHandler):
         self.send_response(200)
         self.send_header('Content-type', 'text/html')
         self.end_headers()
-        # operator = input('''Type one of the opertaors from these options:
-        #                  + : For addition
-        #                  - : For substraction
-        #                  * : For multiplication
-        #                  / : For Divison
-        #
-        #                  Type here: ''')
-        #
-        # num1 = int(input('Enter First Number:'))
-        # num2 = int(input('Enter Second Number:'))
-        # data = {'operator': '', 'num1': '', 'num2': ''}
-        # data['operator'] = operator
-        # data['num1'] = num1
-        # data['num2'] = num2
+
         output = '''<html><body><h1>CALCULATOR</h1>
                     <form method= "POST" enctype="multipart/form-data" action="/" >
                     <labe>SELECT OPERATOR:</label>
@@ -71,37 +57,29 @@ class CalHandler(BaseHTTPRequestHandler):
 
                     result.append(a)
 
-
-
                 if lst[0]== "sub":
                     val= int(lst[1])-int(lst[2])
                     a=f'{lst[1]} - {lst[2]} = {val} '
                     result.append(a)
-                    # result +=  f'{lst[1]} - {lst[2]} = {val} '
+
                 if lst[0]== "mul":
                     val= int(lst[1])*int(lst[2])
                     a = f'{lst[1]} * {lst[2]} = {val} '
                     result.append(a)
-                    # result += f'{lst[1]} * {lst[2]} = {val}'
+
                 if lst[0]== "div":
                     val= int(lst[1])/int(lst[2])
                     a = f'{lst[1]} / {lst[2]} = {val} '
                     result.append(a)
-                    # result += f'{lst[1]} / {lst[2]} = {val}'
+
 
             self.send_response(200)
             self.send_header('Content-type', 'text/html')
             self.send_header('Location', '/')
-
             self.end_headers()
 
 
 
-    # def do_DELETE(self):
-    #
-    #     # self.send_response(200)
-    #     # self.send_header('Content-type', 'text/html')
-    #     # self.end_headers()
-
 server = HTTPServer(('localhost',8080),CalHandler)
 server.serve_forever()
+
