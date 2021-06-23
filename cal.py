@@ -1,17 +1,7 @@
 from http.server import HTTPServer, BaseHTTPRequestHandler
 import cgi
 
-<<<<<<< HEAD
-result = ['']
-=======
 result =['']
-class CalHandler(BaseHTTPRequestHandler):
-    
-    def do_GET(self):
-        self.send_response(200)
-        self.send_header('Content-type', 'text/html')
-        self.end_headers()
->>>>>>> d688caccfab5ffe072bf54dba05f838d7068f8df
 
 
 class CalHandler(BaseHTTPRequestHandler):
@@ -42,7 +32,7 @@ class CalHandler(BaseHTTPRequestHandler):
                                    </form>
                                    </body>   </html>
                             '''
-                # output += f'{result[-1]}'
+
                 self.wfile.write(output.encode())
         if self.path.startswith('/result'):
                 self.send_response(200)
@@ -56,7 +46,6 @@ class CalHandler(BaseHTTPRequestHandler):
 
     def do_POST(self):
         if self.path.startswith('/form'):
-
 
                     global result
                     ctype, pdict = cgi.parse_header(self.headers.get('content-type'))
@@ -79,7 +68,6 @@ class CalHandler(BaseHTTPRequestHandler):
                         if lst[0] == "add":
                             val = int(lst[1]) + int(lst[2])
                             a = f'{lst[1]} + {lst[2]} = {val} '
-
                             result.append(a)
 
                         if lst[0] == "sub":
